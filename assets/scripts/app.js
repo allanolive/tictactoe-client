@@ -52,20 +52,20 @@ $(() => { // once browser is done loading...
   const checkForWinner = function () {
     for (let row = 0; row < 3; row++)
       if (grid[row][0] !== ' ' && grid[row][0] === grid[row][1] && grid[row][0] === grid[row][2]) {
-        $('#result').text('PLAYER ' + grid[row][0] + ' IS THE WINNER!').fadeOut(1500, function () { ('#result').text(' ') })
+        $('#result').text('PLAYER ' + grid[row][0] + ' IS THE WINNER!').fadeOut(3000, function () { ('#result').text(' ') })
       }
     // check if colums are the same
     for (let col = 0; col < 3; col++)
       if (grid[0][col] !== ' ' && grid[0][col] === grid[1][col] && grid[0][col] === grid[2][col]) {
-        $('#result').text('PLAYER ' + grid[0][col] + ' IS THE WINNER!').fadeOut(1500, function () { ('#result').text(' ') })
+        $('#result').text('PLAYER ' + grid[0][col] + ' IS THE WINNER!').fadeOut(3000, function () { ('#result').text(' ') })
       }
     // check if diagonal top left to bottom right are the same
     if (grid[0][0] !== ' ' && grid[0][0] === grid[1][1] && grid[0][0] === grid[2][2]) {
-      $('#result').text('PLAYER ' + grid[0][0] + ' IS THE WINNER!').fadeOut(1500, function () { ('#result').text(' ') })
+      $('#result').text('PLAYER ' + grid[0][0] + ' IS THE WINNER!').fadeOut(3000, function () { ('#result').text(' ') })
     }
     // check if diagonal bottom left to top right is the same
     if (grid[2][0] !== ' ' && grid[2][0] === grid[1][1] && grid[2][0] === grid[0][2]) {
-      $('#result').text('PLAYER ' + grid[0][0] + ' IS THE WINNER!').fadeOut(1500, function () { ('#result').text(' ') })
+      $('#result').text('PLAYER ' + grid[2][0] + ' IS THE WINNER!').fadeOut(3000, function () { ('#result').text(' ') })
     }
     // I need to check if there are any empty spaces by looping through all rows and columns
     for (let row = 0; row < 3; row++) {
