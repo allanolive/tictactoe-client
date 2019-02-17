@@ -13,34 +13,48 @@
     </head>
     <body>
       <h1>Tic Tac Toe</h1>
-      <div class="btn">
+      <!-- <div class="btn">
         <button class="restart">SIGN UP</button>
       </div>
       <div class="btn">
         <button class="restart">SIGN IN</button>
       </div>
       <div class="btn" id="replay">
-        <button class="restart">REPLAY</button>
+        <button class="restart">RESTART</button>
       </div>
-      <div id="gamePlay">
+      <div id="gamePlay"></div>
       <div class="messages">
         <p id="result"></p>
+      </div> -->
+
+        <p id="messages"></p>
+        <form id="sign-up" class="border">
+          <fieldset>
+            <legend>Sign Up</legend>
+            <input name="credentials[email]" type="text" value="an@example.email">
+            <input name="credentials[password]" type="password" value="an example password">
+            <input name="credentials[password_confirmation]" type="password" value="an example password">
+            <input type="submit" value="Sign up!">
+          </fieldset>
+        </form>
+        <div class="container" id="gameBoard">
+          <span class="turn" id="turn">PLAY</span>
+          <div class="square" id="square1"></div>
+          <div class="square" id="square2"></div>
+          <div class="square" id="square3"></div>
+          <div class="square" id="square4"></div>
+          <div class="square" id="square5"></div>
+          <div class="square" id="square6"></div>
+          <div class="square" id="square7"></div>
+          <div class="square" id="square8"></div>
+          <div class="square" id="square9"></div>
+        </div>
+        <div>GAMES COMPLETED
+        <div id="gamesPlayed"></div>
       </div>
 
-      <div class="game-board-container flex-center">
-        <div class="game-board" id="gameBoard">
-          <div class="empty-square square0" data-row=0 data-col=0></div>
-          <div class="empty-square square1" data-row=0 data-col=1></div>
-          <div class="empty-square square2" data-row=0 data-col=2></div>
-          <div class="empty-square square3" data-row=1 data-col=0></div>
-          <div class="empty-square square4" data-row=1 data-col=1></div>
-          <div class="empty-square square5" data-row=1 data-col=2></div>
-          <div class="empty-square square6" data-row=2 data-col=0></div>
-          <div class="empty-square square7" data-row=2 data-col=1></div>
-          <div class="empty-square square8" data-row=2 data-col=2></div>
-        </div>
-      </div>
-      <div class="scoreKeeper">
+        <button id="playAgainBtn">RESET</button>
+      <!-- <div class="scoreKeeper">
         <div>
         <div>player X</div>
         <div>Tie</div>
@@ -53,7 +67,6 @@
         <div id="tie"></div>
         <div id="playerO"></div>
       </div>
-      </div>
-    </div>
+      </div> -->
     </body>
     </html>
