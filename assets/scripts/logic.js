@@ -54,7 +54,7 @@ const enableClick = function () {
           $(this).html('X')
           turn.html('O TURN NOW')
           checkForDraw()
-          getWinner()
+          onGetWinner()
           countGamesplayed()
           console.log(numberOfMoves)
           console.log(gameOver)
@@ -66,7 +66,7 @@ const enableClick = function () {
           $(this).html('O')
           turn.html('X TURN NOW')
           checkForDraw()
-          getWinner()
+          onGetWinner()
           countGamesplayed()
           console.log(numberOfMoves)
           console.log(gameOver)
@@ -78,7 +78,7 @@ const enableClick = function () {
 
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 // this function will find the all the possible winning combos
-const getWinner = function () {
+const onGetWinner = function () {
   const square1 = $('#square1')
   const square2 = $('#square2')
   const square3 = $('#square3')
@@ -89,51 +89,49 @@ const getWinner = function () {
   const square8 = $('#square8')
   const square9 = $('#square9')
 
-  if (square1.html() !== '' &&
-  square1.html() === square2.html() &&
-  square1.html() === square3.html()) {
+  // if (square1.html() !== '' &&
+  // square1.html() === square2.html() &&
+  // square1.html() === square3.html()) {
+  //   winningSequence(square1, square2, square3)
+  //   gameOver = true
+  //   diasableClick()
+  if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[1] &&
+  gameBoard[0] === gameBoard[2]) {
     winningSequence(square1, square2, square3)
     gameOver = true
     diasableClick()
-  } if (square4.html() !== '' &&
-  square4.html() === square5.html() &&
-  square4.html() === square6.html()) {
+  } if (gameBoard[3] !== '' && gameBoard[3] === gameBoard[4] &&
+  gameBoard[3] === gameBoard[5]) {
     winningSequence(square4, square5, square6)
     gameOver = true
     diasableClick()
-  } if (square7.html() !== '' &&
-  square7.html() === square8.html() &&
-  square7.html() === square9.html()) {
+  } if (gameBoard[6] !== '' && gameBoard[6] === gameBoard[7] &&
+  gameBoard[6] === gameBoard[8]) {
     winningSequence(square7, square8, square9)
     gameOver = true
     diasableClick()
-  } if (square1.html() !== '' &&
-  square1.html() === square4.html() &&
-  square1.html() === square7.html()) {
+  } if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[3] &&
+  gameBoard[0] === gameBoard[5]) {
     winningSequence(square1, square4, square7)
     gameOver = true
     diasableClick()
-  } if (square2.html() !== '' &&
-  square2.html() === square5.html() &&
-  square2.html() === square8.html()) {
+  } if (gameBoard[1] !== '' && gameBoard[1] === gameBoard[4] &&
+  gameBoard[1] === gameBoard[7]) {
     winningSequence(square2, square5, square8)
     gameOver = true
     diasableClick()
-  } if (square3.html() !== '' &&
-  square3.html() === square6.html() &&
-  square3.html() === square9.html()) {
+  } if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[5] &&
+  gameBoard[2] === gameBoard[8]) {
     winningSequence(square3, square6, square9)
     gameOver = true
     diasableClick()
-  } if (square1.html() !== '' &&
-  square1.html() === square5.html() &&
-  square1.html() === square9.html()) {
+  } if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[4] &&
+  gameBoard[0] === gameBoard[8]) {
     winningSequence(square1, square5, square9)
     gameOver = true
     diasableClick()
-  } if (square3.html() !== '' &&
-  square3.html() === square5.html() &&
-  square3.html() === square7.html()) {
+  } if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[4] &&
+  gameBoard[2] === gameBoard[6]) {
     winningSequence(square3, square5, square7)
     gameOver = true
     diasableClick()
@@ -146,7 +144,7 @@ const getWinner = function () {
 
 enableClick()
 
-const playAgain = function () {
+const onPlayAgain = function () {
   for (let i = 0; i < squares.length; i++) {
     square.css('background', 'white')
     square.html('')
@@ -155,6 +153,7 @@ const playAgain = function () {
     turn.css('font-size', '25px')
     numberOfMoves = 0
     gameOver = false
+    currentPlayer = 0
     $('#gamesPlayed').html(gamesPlayed)
     checkForDraw()
     enableClick()
@@ -163,6 +162,6 @@ const playAgain = function () {
 }
 
 module.exports = {
-  playAgain,
-  getWinner
+  onPlayAgain,
+  onGetWinner
 }
