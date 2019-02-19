@@ -1,3 +1,5 @@
+'use strict'
+
 const squares = $('#gameBoard div')
 const turn = $('#turn')
 const square = $('.square')
@@ -45,6 +47,8 @@ const enableClick = function () {
     squares[i].onclick = function () {
       if ($(this).html() !== 'X' && $(this).html() !== 'O') {
         if (currentPlayer % 2 === 0) {
+          gameBoard[i] = 'x'
+          console.log(gameBoard)
           currentPlayer += 1
           numberOfMoves += 1
           $(this).html('X')
@@ -55,6 +59,8 @@ const enableClick = function () {
           console.log(numberOfMoves)
           console.log(gameOver)
         } else {
+          gameBoard[i] = ('o')
+          console.log(gameBoard)
           currentPlayer -= 1
           numberOfMoves += 1
           $(this).html('O')
@@ -70,6 +76,7 @@ const enableClick = function () {
   }
 }
 
+let gameBoard = ['', '', '', '', '', '', '', '', '']
 // this function will find the all the possible winning combos
 const getWinner = function () {
   const square1 = $('#square1')
@@ -130,6 +137,8 @@ const getWinner = function () {
     winningSequence(square3, square5, square7)
     gameOver = true
     diasableClick()
+    checkForDraw()
+    // enableClick()
   // } if (gameOver === true) {
   //   diasableClick()
   }
@@ -149,9 +158,11 @@ const playAgain = function () {
     $('#gamesPlayed').html(gamesPlayed)
     checkForDraw()
     enableClick()
+    gameBoard = ['', '', '', '', '', '', '', '', '']
   }
 }
 
 module.exports = {
-  playAgain
+  playAgain,
+  getWinner
 }
