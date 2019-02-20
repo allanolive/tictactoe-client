@@ -1,5 +1,6 @@
 'use strict'
-// const store = (require('./store'))
+
+const store = (require('./store.js'))
 
 const squares = $('#gameBoard div')
 const turn = $('#turn')
@@ -82,12 +83,6 @@ const onGetWinner = function () {
   const square8 = $('#square8')
   const square9 = $('#square9')
 
-  // if (square1.html() !== '' &&
-  // square1.html() === square2.html() &&
-  // square1.html() === square3.html()) {
-  //   winningSequence(square1, square2, square3)
-  //   gameOver = true
-  //   disableClick()
   if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[1] &&
   gameBoard[0] === gameBoard[2]) {
     winningSequence(square1, square2, square3)
@@ -129,16 +124,14 @@ const onGetWinner = function () {
     gameOver = true
     disableClick()
     checkForDraw()
-
-    // enableClick()
-  // } if (gameOver === true) {
-  //   disableClick()
   }
 }
 
 enableClick()
 
 const onPlayAgain = function () {
+  store.gamePlayed += 1
+  console.log(store.gamePlayed)
   for (let i = 0; i < squares.length; i++) {
     square.css('background', 'white')
     square.html('')
@@ -149,6 +142,7 @@ const onPlayAgain = function () {
     gameOver = false
     currentPlayer = 0
     $('#gamesPlayed').html(gamesPlayed)
+    store.player = 'o'
     checkForDraw()
     enableClick()
     gameBoard = ['', '', '', '', '', '', '', '', '']
