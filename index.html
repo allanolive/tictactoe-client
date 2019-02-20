@@ -27,7 +27,7 @@
         <p id="result"></p>
       </div> -->
 
-        <p id="messages"></p>
+        <p class="messages" id="messages"></p>
         <form id="sign-up" class="border">
           <fieldset>
             <legend>Sign Up</legend>
@@ -48,7 +48,7 @@
         <form id="change-password" class="border">
           <fieldset>
             <legend>Change Password</legend>
-            <input name="passwords[old]" type="password" placeholder="Old Password">
+            <input name="password[old]" type="password" placeholder="Old Password">
             <input name="passwords[new]" type="password" placeholder="New Password">
             <input type="submit" value="Change Password!">
           </fieldset>
@@ -57,17 +57,17 @@
         <button id="create-game">Create Game</button>
         <div class="container" id="gameBoard">
           <span class="turn" id="turn">PLAY</span>
-          <div class="square" id="square1"></div>
-          <div class="square" id="square2"></div>
-          <div class="square" id="square3"></div>
-          <div class="square" id="square4"></div>
-          <div class="square" id="square5"></div>
-          <div class="square" id="square6"></div>
-          <div class="square" id="square7"></div>
-          <div class="square" id="square8"></div>
-          <div class="square" id="square9"></div>
+          <div class="square" id="square1" data-cell-index='0'></div>
+          <div class="square" id="square2" data-cell-index='1'></div>
+          <div class="square" id="square3" data-cell-index='2'></div>
+          <div class="square" id="square4" data-cell-index='3'></div>
+          <div class="square" id="square5" data-cell-index='4'></div>
+          <div class="square" id="square6" data-cell-index='5'></div>
+          <div class="square" id="square7" data-cell-index='6'></div>
+          <div class="square" id="square8" data-cell-index='7'></div>
+          <div class="square" id="square9" data-cell-index='8'></div>
         </div>
-        <div>GAMES COMPLETED
+        <div id="games-completed">GAMES COMPLETED
         <div id="gamesPlayed"></div>
       </div>
 
