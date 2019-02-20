@@ -1,4 +1,5 @@
 'use strict'
+// const store = (require('./store'))
 
 const squares = $('#gameBoard div')
 const turn = $('#turn')
@@ -29,12 +30,12 @@ const checkForDraw = function () {
     if (gameOver !== true && numberOfMoves === 9) {
       turn.html('GAME IS A DRAW')
       gameOver = true
-      diasableClick()
+      disableClick()
     }
   }
 }
 
-const diasableClick = function () {
+const disableClick = function () {
   for (let i = 0; i < squares.length; i++) {
     squares[i].onclick = function () {
       squares.off('click')
@@ -48,30 +49,22 @@ const enableClick = function () {
       if ($(this).html() !== 'X' && $(this).html() !== 'O') {
         if (currentPlayer % 2 === 0) {
           gameBoard[i] = 'x'
-          console.log(gameBoard)
           currentPlayer += 1
           numberOfMoves += 1
           $(this).html('X')
           turn.html('O TURN NOW')
-          checkForDraw()
-          onGetWinner()
-          countGamesplayed()
-          console.log(numberOfMoves)
-          console.log(gameOver)
         } else {
           gameBoard[i] = ('o')
-          console.log(gameBoard)
           currentPlayer -= 1
           numberOfMoves += 1
           $(this).html('O')
           turn.html('X TURN NOW')
-          checkForDraw()
-          onGetWinner()
-          countGamesplayed()
-          console.log(numberOfMoves)
-          console.log(gameOver)
         }
       }
+
+      checkForDraw()
+      onGetWinner()
+      countGamesplayed()
     }
   }
 }
@@ -94,51 +87,52 @@ const onGetWinner = function () {
   // square1.html() === square3.html()) {
   //   winningSequence(square1, square2, square3)
   //   gameOver = true
-  //   diasableClick()
+  //   disableClick()
   if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[1] &&
   gameBoard[0] === gameBoard[2]) {
     winningSequence(square1, square2, square3)
     gameOver = true
-    diasableClick()
+    disableClick()
   } if (gameBoard[3] !== '' && gameBoard[3] === gameBoard[4] &&
   gameBoard[3] === gameBoard[5]) {
     winningSequence(square4, square5, square6)
     gameOver = true
-    diasableClick()
+    disableClick()
   } if (gameBoard[6] !== '' && gameBoard[6] === gameBoard[7] &&
   gameBoard[6] === gameBoard[8]) {
     winningSequence(square7, square8, square9)
     gameOver = true
-    diasableClick()
+    disableClick()
   } if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[3] &&
-  gameBoard[0] === gameBoard[5]) {
+  gameBoard[0] === gameBoard[6]) {
     winningSequence(square1, square4, square7)
     gameOver = true
-    diasableClick()
+    disableClick()
   } if (gameBoard[1] !== '' && gameBoard[1] === gameBoard[4] &&
   gameBoard[1] === gameBoard[7]) {
     winningSequence(square2, square5, square8)
     gameOver = true
-    diasableClick()
+    disableClick()
   } if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[5] &&
   gameBoard[2] === gameBoard[8]) {
     winningSequence(square3, square6, square9)
     gameOver = true
-    diasableClick()
+    disableClick()
   } if (gameBoard[0] !== '' && gameBoard[0] === gameBoard[4] &&
   gameBoard[0] === gameBoard[8]) {
     winningSequence(square1, square5, square9)
     gameOver = true
-    diasableClick()
+    disableClick()
   } if (gameBoard[2] !== '' && gameBoard[2] === gameBoard[4] &&
   gameBoard[2] === gameBoard[6]) {
     winningSequence(square3, square5, square7)
     gameOver = true
-    diasableClick()
+    disableClick()
     checkForDraw()
+
     // enableClick()
   // } if (gameOver === true) {
-  //   diasableClick()
+  //   disableClick()
   }
 }
 
