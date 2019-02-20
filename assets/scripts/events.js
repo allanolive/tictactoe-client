@@ -3,6 +3,7 @@
 const getFormFields = require('../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
+const store = require('./store')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -22,7 +23,6 @@ const onSignIn = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault()
-  console.log('sign out worked')
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -30,7 +30,6 @@ const onSignOut = function (event) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-  console.log('change password worked')
   const data = getFormFields(this)
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
@@ -39,10 +38,17 @@ const onChangePassword = function (event) {
 
 const onCreateGame = function () {
   event.preventDefault()
-  console.log('button works')
   api.createGame()
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
+}
+
+const onUpdateGame = function () {
+  const index = $(event.target).data('cell-index') // index
+  const value = store.player // player
+  api.updateGame(index, value)
+    .then(ui.updateGameSuccess)
+    .catch(ui.upGameFailure)
 }
 
 module.exports = {
@@ -50,5 +56,6 @@ module.exports = {
   onSignIn,
   onSignOut,
   onChangePassword,
-  onCreateGame
+  onCreateGame,
+  onUpdateGame
 }
