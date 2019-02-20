@@ -2,6 +2,7 @@
 
 const store = require('./store')
 const config = require('./config')
+const logic = require('./logic')
 
 const signUp = function (data) {
   console.log(data)
@@ -13,8 +14,6 @@ const signUp = function (data) {
 }
 
 const signIn = function (data) {
-  console.log('data is...' + data)
-  console.log(data)
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -55,10 +54,30 @@ const createGame = function () {
   })
 }
 
+const updateGame = function (index, value) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': index,
+          'value': value
+        },
+        'over': logic.gameOver
+      }
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   signOut,
   changePassword,
-  createGame
+  createGame,
+  updateGame
 }
