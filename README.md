@@ -1,11 +1,7 @@
-Pin your repository on GitHub as a Popular Repository
 
 
-Complete the repository Description field and Website field with a meaningful sentence description of the application and link to the
-
-
-live URL github image
-
+LINK TO GAME:
+https://allanolive.github.io/tictactoe-client/
 
 
 TECHNOLOGIES USED:
@@ -56,6 +52,7 @@ UNSOLVED PROBLEMS:
 - change over in games to true when game is over
 - display invalid moves by current player
 - remove errors from console
+- improve user interface and effects
 
 
 
