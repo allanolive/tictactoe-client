@@ -19,9 +19,9 @@ const isGameOver = function () {
 }
 
 const getValue = function () {
-  if (currentPlayer === 0) {
+  if (currentPlayer === 1) {
     return 'x'
-  } else if (currentPlayer === 1) {
+  } else if (currentPlayer === 0) {
     return 'o'
   }
 }
