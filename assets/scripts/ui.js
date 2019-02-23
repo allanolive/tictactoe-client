@@ -18,7 +18,6 @@ const signInSuccess = function (responseData) {
   store.user = responseData.user
   $('#sign-up').hide()
   $('#sign-in').hide()
-  $('#gameBoard').show()
   $('#games-completed').show()
   $('#sign-out').show()
   $('#create-game').show()
@@ -74,6 +73,8 @@ const signOutSuccess = function () {
   $('#games-completed').hide()
   $('#messages').show()
   store.user = null
+  store.game = null
+  logic.gameBoard = ['', '', '', '', '', '', '', '', '']
 }
 
 const signOutFailure = function () {
@@ -83,6 +84,7 @@ const signOutFailure = function () {
 
 const createGameSuccess = function (responseData) {
   store.game = responseData.game
+  $('#gameBoard').show()
   $('#turn').text('Player X is Up')
   logic.onPlayAgain()
   // $('#create-game').on('click', logic.onPlayAgain())
