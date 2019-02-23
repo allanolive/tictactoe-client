@@ -93,8 +93,7 @@ const createGameSuccess = function (responseData) {
 }
 
 const createGameFailure = function () {
-  $('#messages').text('Error on create game')
-  // console.error('createGameFailure ran. Error is :', error)
+  $('#messages').text('Error on creating game')
 }
 
 const updateGameSuccess = function (responseData, over) {
