@@ -1,6 +1,6 @@
 'use strict'
 
-const store = (require('./store.js'))
+const store = require('./store.js')
 
 const squares = $('#gameBoard div')
 const turn = $('#turn')
@@ -27,14 +27,14 @@ const winningSequence = function (sqr1, sqr2, sqr3) {
 }
 
 const checkForDraw = function () {
-  for (let i = 0; i < squares.length; i++) {
-    if (gameOver !== true && numberOfMoves === 9) {
-      turn.html('GAME IS A DRAW')
-      gameOver = true
-      disableClick()
-    }
+  // for (let i = 0; i < squares.length; i++) {
+  if (gameOver !== true && numberOfMoves === 9) {
+    turn.html('GAME IS A DRAW')
+    gameOver = true
+    disableClick()
   }
 }
+// }
 
 const disableClick = function () {
   for (let i = 0; i < squares.length; i++) {
@@ -130,23 +130,28 @@ const onGetWinner = function () {
 enableClick()
 
 const onPlayAgain = function () {
-  store.gamePlayed += 1
-  console.log(store.gamePlayed)
+  console.log(store.game.id)
   for (let i = 0; i < squares.length; i++) {
     square.css('background', 'white')
     square.html('')
-    $().html('')
-    turn.html('PLAY')
+    turn.html('PLAYER X START!')
     turn.css('font-size', '25px')
-    numberOfMoves = 0
-    gameOver = false
-    currentPlayer = 0
-    $('#gamesPlayed').html(gamesPlayed)
-    store.player = 'o'
-    checkForDraw()
-    enableClick()
-    gameBoard = ['', '', '', '', '', '', '', '', '']
+    // numberOfMoves = 0
+    // gameOver = false
+    // currentPlayer = 0
+    // $('#gamesPlayed').html(gamesPlayed)
+    // checkForDraw()
+    // enableClick()
+    // gameBoard = ['', '', '', '', '', '', '', '', '']
   }
+  numberOfMoves = 0
+  gameOver = false
+  currentPlayer = 0
+  checkForDraw()
+  enableClick()
+  gameBoard = ['', '', '', '', '', '', '', '', '']
+  $('#gamesPlayed').html(gamesPlayed) // CHECK IF THIS IS NEEDED
+  store.player = 'o' // CHECK WHATS UP HERE
 }
 
 module.exports = {
