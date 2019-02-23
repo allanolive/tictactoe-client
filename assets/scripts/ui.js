@@ -3,37 +3,34 @@
 const store = (require('./store'))
 const logic = (require('./logic'))
 
-const signUpSuccess = function (data) {
+const signUpSuccess = function (responseData) {
+  store.user = responseData.user
   $('#messages').text('You Have Successfully Signed Up, Please Sign In'
   ).css('background-color', 'limegreen')
   $('#sign-up').hide()
-  store.gamePlayed = -1
-  // console.log('signUpSuccess worked. Data is :', data)
 }
 
 const signUpFailure = function () {
   $('#messages').text('Error on sign up')
-  // console.error('signUpFailure worked. Error is :', error)
 }
 
-const signInSuccess = function (data) {
-  // $('#messages').text('Hello' + store.user
-  // ).css('background-color', 'limegreen')
+const signInSuccess = function (responseData) {
+  store.user = responseData.user
+  $('#sign-up').hide()
+  $('#sign-in').hide()
   $('#gameBoard').show()
   $('#games-completed').show()
   $('#sign-out').show()
   $('#create-game').show()
-  $('#sign-up').hide()
-  $('#sign-in').hide()
   $('#get-index').show()
   $('#change-password').show()
   const squares = $('#gameBoard div')
   for (let i = 0; i < squares.length; i++) {
     squares[i].onclick = function () {
+      $('#turn').text('INVALID MOVE')
       squares.off('click')
     }
   }
-  store.user = data.user
   $('#messages').text('Welcome ' + store.user.email +
   ', You Are Player X. Please Create A New Game To Start'
   ).css('background-color', 'white')
@@ -42,9 +39,20 @@ const signInSuccess = function (data) {
 const signInFailure = function () {
   $('#messages').text('Please Enter Correct Email and Password'
   ).css('background-color', 'red')
-  $('#messages').trigger('reset')
   $('form').trigger('reset')
-  // console.error('signUpFailure worked. Error is :', error)
+}
+
+const changePasswordSuccess = function () {
+  $('#messages').text('Changed password successfully'
+  ).css('background-color', 'limegreen')
+  $('form').trigger('reset')
+}
+
+const changePasswordFailure = function () {
+  $('#messages').text('Error on change password'
+  ).css('background-color', 'white')
+  $('form').trigger('reset')
+// console.error('changePasswordFailure ran. Error is :', error)
 }
 
 const signOutSuccess = function () {
@@ -71,31 +79,17 @@ const signOutSuccess = function () {
 const signOutFailure = function () {
   $('#messages').text('Error on sign out')
   $('form').trigger('reset')
-  // console.error('signOutFailure ran. Error is :', error)
-}
-
-const changePasswordSuccess = function () {
-  $('#messages').text('Changed password successfully'
-  ).css('background-color', 'limegreen')
-  $('form').trigger('reset')
-}
-
-const changePasswordFailure = function () {
-  $('#messages').text('Error on change password'
-  ).css('background-color', 'white')
-  $('form').trigger('reset')
-  // console.error('changePasswordFailure ran. Error is :', error)
 }
 
 const createGameSuccess = function (responseData) {
+  store.game = responseData.game
   $('#turn').text('Player X is Up')
-  $('#create-game').on('click', logic.onPlayAgain())
+  logic.onPlayAgain()
+  // $('#create-game').on('click', logic.onPlayAgain())
   $('#messages').hide()
   $('#create-game').hide()
   $('#playAgainBtn').show()
-  store.game = responseData.game
   store.player = 'o'
-  console.log(store.game)
 }
 
 const createGameFailure = function () {
