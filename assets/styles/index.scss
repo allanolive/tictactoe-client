@@ -9,6 +9,10 @@ h1 {
   font-family: sans-serif;
 }
 
+body {
+  background-color: white;
+}
+
 .container {
   overflow: hidden;
   width: 300px;
@@ -24,6 +28,7 @@ h1 {
     background: #000;
     height: 40px;
     justify-content: center;
+    padding-top: 8px;
   }
 
   .square {
