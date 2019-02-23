@@ -19,6 +19,5 @@ $(() => {
   $('#sign-out').on('click', authEvents.onSignOut)
   $('#gameBoard div').on('click', authEvents.onUpdateGame)
   $('#gameBoard div').on('click', gameLogic.ongetWinner)
-  $('#playAgainBtn').on('click', gameLogic.onPlayAgain)
   $('#playAgainBtn').on('click', authEvents.onCreateGame)
 })
