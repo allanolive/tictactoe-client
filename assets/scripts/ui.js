@@ -26,6 +26,7 @@ const signInSuccess = function (data) {
   $('#sign-up').hide()
   $('#sign-in').hide()
   $('#get-index').show()
+  $('#change-password').show()
   const squares = $('#gameBoard div')
   for (let i = 0; i < squares.length; i++) {
     squares[i].onclick = function () {
@@ -42,6 +43,7 @@ const signInFailure = function () {
   $('#messages').text('Please Enter Correct Email and Password'
   ).css('background-color', 'red')
   $('#messages').trigger('reset')
+  $('form').trigger('reset')
   // console.error('signUpFailure worked. Error is :', error)
 }
 
@@ -54,8 +56,11 @@ const signOutSuccess = function () {
   $('form').trigger('reset')
   // logic.onPlayAgain()
   $('#sign-in').show()
+  $('#sign-up').show()
   $('#gameBoard').hide()
   $('#create-game').hide()
+  $('#change-password').hide()
+  $('#get-index').hide()
   $('#playAgainBtn').hide()
   $('#sign-out').hide()
   $('#games-completed').hide()
@@ -65,16 +70,20 @@ const signOutSuccess = function () {
 
 const signOutFailure = function () {
   $('#messages').text('Error on sign out')
+  $('form').trigger('reset')
   // console.error('signOutFailure ran. Error is :', error)
 }
 
 const changePasswordSuccess = function () {
   $('#messages').text('Changed password successfully'
   ).css('background-color', 'limegreen')
+  $('form').trigger('reset')
 }
 
 const changePasswordFailure = function () {
-  $('#messages').text('Error on change password')
+  $('#messages').text('Error on change password'
+  ).css('background-color', 'white')
+  $('form').trigger('reset')
   // console.error('changePasswordFailure ran. Error is :', error)
 }
 
