@@ -10,6 +10,21 @@ let currentPlayer = 0
 let numberOfMoves = 0
 let gamesPlayed = 0
 
+const isGameOver = function () {
+  if (gameOver === true) {
+    return true
+  } else if (gameOver === false) {
+    return false
+  }
+}
+
+const getValue = function () {
+  if (currentPlayer === 0) {
+    return 'x'
+  } else if (currentPlayer === 1) {
+    return 'o'
+  }
+}
 const countGamesplayed = function () {
   if (gameOver !== true && numberOfMoves === 9) {
     gamesPlayed += 1
@@ -156,5 +171,7 @@ const onPlayAgain = function () {
 
 module.exports = {
   onPlayAgain,
-  onGetWinner
+  onGetWinner,
+  getValue,
+  isGameOver
 }

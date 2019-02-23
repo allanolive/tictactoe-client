@@ -89,7 +89,7 @@ const createGameSuccess = function (responseData) {
   $('#messages').hide()
   $('#create-game').hide()
   $('#playAgainBtn').show()
-  store.player = 'o'
+  store.player = 'x'
 }
 
 const createGameFailure = function () {
@@ -97,8 +97,9 @@ const createGameFailure = function () {
 }
 
 const updateGameSuccess = function (responseData, over) {
-  store.player === 'x' ? store.player = 'o' : store.player = 'x'
   store.game = responseData.game
+  console.log(store.game)
+  store.player === 'x' ? store.player = 'o' : store.player = 'x'
 }
 
 const updateGameFailure = function () {

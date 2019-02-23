@@ -63,9 +63,9 @@ const updateGame = function (index, value) {
       'game': {
         'cell': {
           'index': index,
-          'value': value
+          'value': logic.getValue// MODIFIED THIS WITH NO SAVE
         },
-        'over': logic.gameOver
+        'over': logic.isGameOver
       }
     }
   })
