@@ -19,6 +19,5 @@ $(() => {
   $('#create-game').on('click', authEvents.onCreateGame)
   $('#playAgainBtn').on('click', authEvents.onCreateGame)
   $('#gameBoard div').on('click', authEvents.onUpdateGame)
-  // $('#gameBoard div').on('click', gameLogic.onGetWinner) // TRYING TO PUT FUNCTION IN UPDATE GAME SUCCESS
   $('#get-index').on('click', authEvents.onGetGames)
 })

@@ -41,7 +41,6 @@ const disableClick = function () {
 }
 
 const checkForDraw = function () {
-  // for (let i = 0; i < squares.length; i++) {
   if (gameOver !== true && numberOfMoves === 9) {
     turn.html('GAME IS A DRAW')
     gameOver = true
@@ -51,7 +50,6 @@ const checkForDraw = function () {
 
 let gameBoard = ['', '', '', '', '', '', '', '', '']
 
-// this function will find the all the possible winning combos
 const onGetWinner = function () {
   const square1 = $('#square1')
   const square2 = $('#square2')
@@ -115,26 +113,21 @@ const enableClick = function () {
     squares[i].onclick = function () {
       if ($(this).html() !== 'X' && $(this).html() !== 'O') {
         if (currentPlayer % 2 === 0) {
-          // squares.on('click')
           gameBoard[i] = 'x'
           currentPlayer += 1
           numberOfMoves += 1
           $(this).html('X')
           turn.html('O TURN NOW')
-          // $(this).off('click')
         } else {
-          // squares.on('click')
           gameBoard[i] = ('o')
           currentPlayer -= 1
           numberOfMoves += 1
           $(this).html('O')
           turn.html('X TURN NOW')
-          // $(this).off('click')
         }
         checkForDraw()
         onGetWinner()
       } else {
-        // squares.off('click')
       }
     }
   }

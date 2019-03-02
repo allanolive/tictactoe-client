@@ -25,13 +25,6 @@ const signInSuccess = function (responseData) {
   $('#get-index').show()
   $('#change-password').show()
   $('#games-completed').hide()
-  // const squares = $('#gameBoard div')
-  // for (let i = 0; i < squares.length; i++) {
-  //   squares[i].onclick = function () {                                       WILL REMOVE THIS SINCE BOARD NO LONGER APPEAR UNTIL CREATE
-  //     $('#turn').text('INVALID MOVE')
-  //     squares.off('click')
-  //   }
-  // }
   $('#messages').text('Welcome ' + store.user.email +
   ', You Are Player X. Please Create A New Game To Start'
   ).css('background-color', 'white')
@@ -53,7 +46,6 @@ const changePasswordFailure = function () {
   $('#messages').text('Error on change password'
   ).css('background-color', 'white')
   $('form').trigger('reset')
-// console.error('changePasswordFailure ran. Error is :', error)
 }
 
 const signOutSuccess = function () {
@@ -63,7 +55,6 @@ const signOutSuccess = function () {
     ).css('background-color', 'white')
   }, 3000)
   $('form').trigger('reset')
-  // logic.onPlayAgain()
   $('#sign-in').show()
   $('#sign-up').show()
   $('#gameBoard').hide()
@@ -89,7 +80,7 @@ const createGameSuccess = function (responseData) {
   store.player = 'X'
   $('#gameBoard').show()
   $('#turn').text('Player X is Up')
-  logic.onPlayAgain() // WILL TRY TO MOVE THIS TO UPDATE GAME
+  logic.onPlayAgain()
   $('#messages').hide()
   $('#create-game').hide()
   $('#playAgainBtn').show()
@@ -105,19 +96,14 @@ const createGameFailure = function () {
 const updateGameSuccess = function (responseData, over) {
   store.game = responseData.game
   store.player === 'X' ? store.player = 'O' : store.player = 'X'
-  console.log('dam')
-  // console.log(logic.currentSquare())
-  // logic.onGetWinner()   // TRYING TO INSERT WINNER HERE
 }
 
 const updateGameFailure = function () {
   $('#messages').text('Error on update game')
-  // console.error('update game failure. Error is :', error)
 }
 
 const getGameSuccess = function (responseData) {
   store.games = responseData.games
-  console.log(store.games.length)
   $('#gamesPlayed').text(store.games.length)
   $('#games-completed').show()
   $('#gamesPlayed').show()
@@ -126,7 +112,6 @@ const getGameSuccess = function (responseData) {
 
 const getGameFailure = function () {
   $('#messages').text('Error on change password')
-  // console.error('changePasswordFailure ran. Error is :', error)
 }
 
 module.exports = {
