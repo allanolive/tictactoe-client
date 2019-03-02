@@ -23,13 +23,14 @@ const signInSuccess = function (responseData) {
   $('#create-game').show()
   $('#get-index').show()
   $('#change-password').show()
-  const squares = $('#gameBoard div')
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].onclick = function () {
-      $('#turn').text('INVALID MOVE')
-      squares.off('click')
-    }
-  }
+  $('#games-completed').hide()
+  // const squares = $('#gameBoard div')
+  // for (let i = 0; i < squares.length; i++) {
+  //   squares[i].onclick = function () {                                       WILL REMOVE THIS SINCE BOARD NO LONGER APPEAR UNTIL CREATE
+  //     $('#turn').text('INVALID MOVE')
+  //     squares.off('click')
+  //   }
+  // }
   $('#messages').text('Welcome ' + store.user.email +
   ', You Are Player X. Please Create A New Game To Start'
   ).css('background-color', 'white')
@@ -84,24 +85,25 @@ const signOutFailure = function () {
 
 const createGameSuccess = function (responseData) {
   store.game = responseData.game
+  store.player = 'x'
   $('#gameBoard').show()
   $('#turn').text('Player X is Up')
-  logic.onPlayAgain()
-  // $('#create-game').on('click', logic.onPlayAgain())
+  logic.onPlayAgain() // WILL TRY TO MOVE THIS TO UPDATE GAME
   $('#messages').hide()
   $('#create-game').hide()
   $('#playAgainBtn').show()
-  store.player = 'x'
+  $('#gamesPlayed').hide()
+  $('#games-completed').hide()
 }
 
 const createGameFailure = function () {
-  $('#messages').text('Error on creating game')
+  $('#messages').text('Please sign out of any other device first')
 }
 
 const updateGameSuccess = function (responseData, over) {
   store.game = responseData.game
-  console.log(store.game)
   store.player === 'x' ? store.player = 'o' : store.player = 'x'
+  // logic.onGetWinner()   // TRYING TO INSERT WINNER HERE
 }
 
 const updateGameFailure = function () {
@@ -111,8 +113,10 @@ const updateGameFailure = function () {
 
 const getGameSuccess = function (responseData) {
   store.games = responseData.games
-  console.log(store.games)
-  $('#messages').html(store.games)
+  console.log(store.games.length)
+  $('#gamesPlayed').text(store.games.length)
+  $('#games-completed').show()
+  $('#gamesPlayed').show()
 }
 
 const getGameFailure = function () {

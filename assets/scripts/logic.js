@@ -1,5 +1,4 @@
 'use strict'
-
 const store = require('./store.js')
 
 const squares = $('#gameBoard div')
@@ -41,16 +40,6 @@ const winningSequence = function (sqr1, sqr2, sqr3) {
   turn.css('font-size', '32px')
 }
 
-const checkForDraw = function () {
-  // for (let i = 0; i < squares.length; i++) {
-  if (gameOver !== true && numberOfMoves === 9) {
-    turn.html('GAME IS A DRAW')
-    gameOver = true
-    disableClick()
-  }
-}
-// }
-
 const disableClick = function () {
   for (let i = 0; i < squares.length; i++) {
     squares[i].onclick = function () {
@@ -59,33 +48,17 @@ const disableClick = function () {
   }
 }
 
-const enableClick = function () {
-  for (let i = 0; i < squares.length; i++) {
-    squares[i].onclick = function () {
-      if ($(this).html() !== 'X' && $(this).html() !== 'O') {
-        if (currentPlayer % 2 === 0) {
-          gameBoard[i] = 'x'
-          currentPlayer += 1
-          numberOfMoves += 1
-          $(this).html('X')
-          turn.html('O TURN NOW')
-        } else {
-          gameBoard[i] = ('o')
-          currentPlayer -= 1
-          numberOfMoves += 1
-          $(this).html('O')
-          turn.html('X TURN NOW')
-        }
-      }
-
-      checkForDraw()
-      onGetWinner()
-      countGamesplayed()
-    }
+const checkForDraw = function () {
+  // for (let i = 0; i < squares.length; i++) {
+  if (gameOver !== true && numberOfMoves === 9) {
+    turn.html('GAME IS A DRAW')
+    gameOver = true
+    disableClick()
   }
 }
 
 let gameBoard = ['', '', '', '', '', '', '', '', '']
+
 // this function will find the all the possible winning combos
 const onGetWinner = function () {
   const square1 = $('#square1')
@@ -137,8 +110,37 @@ const onGetWinner = function () {
   gameBoard[2] === gameBoard[6]) {
     winningSequence(square3, square5, square7)
     gameOver = true
-    disableClick()
     checkForDraw()
+    if (isGameOver === true) {
+      $('#gameBoard').hide()
+    }
+    disableClick()
+  }
+}
+
+const enableClick = function () {
+  for (let i = 0; i < squares.length; i++) {
+    squares[i].onclick = function () {
+      if ($(this).html() !== 'X' && $(this).html() !== 'O') {
+        if (currentPlayer % 2 === 0) {
+          gameBoard[i] = 'x'
+          currentPlayer += 1
+          numberOfMoves += 1
+          $(this).html('X')
+          turn.html('O TURN NOW')
+        } else {
+          gameBoard[i] = ('o')
+          currentPlayer -= 1
+          numberOfMoves += 1
+          $(this).html('O')
+          turn.html('X TURN NOW')
+        }
+      }
+
+      checkForDraw()
+      onGetWinner()
+      countGamesplayed()
+    }
   }
 }
 

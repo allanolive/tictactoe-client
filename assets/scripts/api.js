@@ -63,7 +63,7 @@ const updateGame = function (index, value) {
       'game': {
         'cell': {
           'index': index,
-          'value': logic.getValue// MODIFIED THIS WITH NO SAVE
+          'value': logic.getValue
         },
         'over': logic.isGameOver
       }
@@ -73,7 +73,7 @@ const updateGame = function (index, value) {
 
 const getGames = function () {
   return $.ajax({
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + '/games?over=true',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token

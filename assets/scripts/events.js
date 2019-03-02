@@ -4,6 +4,7 @@ const getFormFields = require('../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const store = require('./store')
+const logic = require('./logic')
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -39,8 +40,10 @@ const onChangePassword = function (event) {
 const onCreateGame = function () {
   event.preventDefault()
   api.createGame()
+    // .then(logic.onPlayAgain())
     .then(ui.createGameSuccess)
     .catch(ui.createGameFailure)
+    // logic.onPlayAgain()
 }
 
 const onUpdateGame = function () {
