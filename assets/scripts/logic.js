@@ -7,7 +7,6 @@ const square = $('.square')
 let gameOver = false
 let currentPlayer = 0
 let numberOfMoves = 0
-let gamesPlayed = 0
 
 const isGameOver = function () {
   if (gameOver === true) {
@@ -19,16 +18,9 @@ const isGameOver = function () {
 
 const getValue = function () {
   if (currentPlayer === 1) {
-    return 'x'
+    return 'X'
   } else if (currentPlayer === 0) {
-    return 'o'
-  }
-}
-const countGamesplayed = function () {
-  if (gameOver !== true && numberOfMoves === 9) {
-    gamesPlayed += 1
-  } else if (gameOver === true) {
-    gamesPlayed += 1
+    return 'O'
   }
 }
 
@@ -123,23 +115,27 @@ const enableClick = function () {
     squares[i].onclick = function () {
       if ($(this).html() !== 'X' && $(this).html() !== 'O') {
         if (currentPlayer % 2 === 0) {
+          // squares.on('click')
           gameBoard[i] = 'x'
           currentPlayer += 1
           numberOfMoves += 1
           $(this).html('X')
           turn.html('O TURN NOW')
+          // $(this).off('click')
         } else {
+          // squares.on('click')
           gameBoard[i] = ('o')
           currentPlayer -= 1
           numberOfMoves += 1
           $(this).html('O')
           turn.html('X TURN NOW')
+          // $(this).off('click')
         }
+        checkForDraw()
+        onGetWinner()
+      } else {
+        // squares.off('click')
       }
-
-      checkForDraw()
-      onGetWinner()
-      countGamesplayed()
     }
   }
 }
@@ -147,7 +143,6 @@ const enableClick = function () {
 enableClick()
 
 const onPlayAgain = function () {
-  console.log(store.game.id)
   for (let i = 0; i < squares.length; i++) {
     square.css('background', 'white')
     square.html('')
@@ -167,8 +162,7 @@ const onPlayAgain = function () {
   checkForDraw()
   enableClick()
   gameBoard = ['', '', '', '', '', '', '', '', '']
-  $('#gamesPlayed').html(gamesPlayed) // CHECK IF THIS IS NEEDED
-  store.player = 'o' // CHECK WHATS UP HERE
+  store.player = 'O' // CHECK WHATS UP HERE
 }
 
 module.exports = {

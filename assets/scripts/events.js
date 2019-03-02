@@ -39,6 +39,7 @@ const onChangePassword = function (event) {
 
 const onCreateGame = function () {
   event.preventDefault()
+  console.log()
   api.createGame()
     // .then(logic.onPlayAgain())
     .then(ui.createGameSuccess)
@@ -47,9 +48,13 @@ const onCreateGame = function () {
 }
 
 const onUpdateGame = function () {
+  event.preventDefault()
+  const square = event.target
+  console.log(square)
   const index = $(event.target).data('cell-index') // index
   const value = store.player // player
   api.updateGame(index, value)
+    .then(logic.enableClick)
     .then(ui.updateGameSuccess)
     .catch(ui.upGameFailure)
 }

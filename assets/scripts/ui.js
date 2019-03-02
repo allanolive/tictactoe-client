@@ -12,6 +12,7 @@ const signUpSuccess = function (responseData) {
 
 const signUpFailure = function () {
   $('#messages').text('Error on sign up')
+  $('form').trigger('reset')
 }
 
 const signInSuccess = function (responseData) {
@@ -85,7 +86,7 @@ const signOutFailure = function () {
 
 const createGameSuccess = function (responseData) {
   store.game = responseData.game
-  store.player = 'x'
+  store.player = 'X'
   $('#gameBoard').show()
   $('#turn').text('Player X is Up')
   logic.onPlayAgain() // WILL TRY TO MOVE THIS TO UPDATE GAME
@@ -94,6 +95,7 @@ const createGameSuccess = function (responseData) {
   $('#playAgainBtn').show()
   $('#gamesPlayed').hide()
   $('#games-completed').hide()
+  $('#get-index').show()
 }
 
 const createGameFailure = function () {
@@ -102,7 +104,9 @@ const createGameFailure = function () {
 
 const updateGameSuccess = function (responseData, over) {
   store.game = responseData.game
-  store.player === 'x' ? store.player = 'o' : store.player = 'x'
+  store.player === 'X' ? store.player = 'O' : store.player = 'X'
+  console.log('dam')
+  // console.log(logic.currentSquare())
   // logic.onGetWinner()   // TRYING TO INSERT WINNER HERE
 }
 
@@ -117,6 +121,7 @@ const getGameSuccess = function (responseData) {
   $('#gamesPlayed').text(store.games.length)
   $('#games-completed').show()
   $('#gamesPlayed').show()
+  $('#get-index').hide()
 }
 
 const getGameFailure = function () {
