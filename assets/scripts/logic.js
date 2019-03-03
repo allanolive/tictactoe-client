@@ -128,6 +128,7 @@ const enableClick = function () {
         checkForDraw()
         onGetWinner()
       } else {
+        $('#turn').html('INVALID MOVE')
       }
     }
   }
@@ -141,13 +142,6 @@ const onPlayAgain = function () {
     square.html('')
     turn.html('PLAYER X START!')
     turn.css('font-size', '25px')
-    // numberOfMoves = 0
-    // gameOver = false
-    // currentPlayer = 0
-    // $('#gamesPlayed').html(gamesPlayed)
-    // checkForDraw()
-    // enableClick()
-    // gameBoard = ['', '', '', '', '', '', '', '', '']
   }
   numberOfMoves = 0
   gameOver = false
