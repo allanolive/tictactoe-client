@@ -12,21 +12,21 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Tic Tac Toe</h1>
+    <h1><span class="username" id="username"></span>Tic Tac Toe<span class="total-games" id="total-games"> </span></h1>
         <p class="messages" id="messages">Please Sign In</p>
         <form id="sign-up" class="border">
           <fieldset>
             <legend>Sign Up</legend>
-            <input name="credentials[email]" type="text" placeholder="email">
-            <input name="credentials[password]" type="password" placeholder="Password">
-            <input name="credentials[password_confirmation]" type="password" placeholder="Confirm Password">
+            <input name="credentials[email]" type="email" placeholder="email">
+            <input name="credentials[password]" required type="password" placeholder="Password">
+            <input name="credentials[password_confirmation]" required type="password" placeholder="Confirm Password">
             <input type="submit" value="Sign up!">
           </fieldset>
         </form>
         <form id="sign-in" class="border">
             <fieldset>
               <legend>Sign In</legend>
-              <input name="credentials[email]" type="text" placeholder="email">
+              <input name="credentials[email]" type="email" placeholder="email">
               <input name="credentials[password]" type="password" placeholder="Password">
               <input type="submit" value="Sign In!">
             </fieldset>
@@ -54,7 +54,7 @@
           <div class="square" id="square8" data-cell-index='7'></div>
           <div class="square" id="square9" data-cell-index='8'></div>
         </div>
-        <div id="games-completed">GAMES COMPLETED
+        <div class="results" id="games-completed">GAMES COMPLETED
         <div id="gamesPlayed"></div>
       </div>
 

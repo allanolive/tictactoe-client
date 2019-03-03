@@ -28,14 +28,14 @@ const winningSequence = function (sqr1, sqr2, sqr3) {
   sqr1.css('background', 'red')
   sqr2.css('background', 'red')
   sqr3.css('background', 'red')
-  turn.html('Player ' + sqr1.html() + ' Won')
-  turn.css('font-size', '32px')
+  turn.html('PLAYER ' + sqr1.html() + ' WON')
 }
 
 const disableClick = function () {
   for (let i = 0; i < squares.length; i++) {
     squares[i].onclick = function () {
       squares.off('click')
+      $('#turn').html('INVALID MOVE')
     }
   }
 }

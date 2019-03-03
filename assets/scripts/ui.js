@@ -5,9 +5,8 @@ const logic = (require('./logic'))
 
 const signUpSuccess = function (responseData) {
   store.user = responseData.user
-  $('#messages').text('You Have Successfully Signed Up, Please Sign In'
-  ).css('background-color', 'limegreen')
-  $('#sign-up').hide()
+  $('#messages').text('You Have Successfully Signed Up, Please Sign In')
+  $('form').trigger('reset')
 }
 
 const signUpFailure = function () {
@@ -17,6 +16,7 @@ const signUpFailure = function () {
 
 const signInSuccess = function (responseData) {
   store.user = responseData.user
+  console.log(store)
   $('#sign-up').hide()
   $('#sign-in').hide()
   $('#games-completed').show()
@@ -25,21 +25,22 @@ const signInSuccess = function (responseData) {
   $('#get-index').show()
   $('#change-password').show()
   $('#games-completed').hide()
-  $('#messages').text('Welcome ' + store.user.email +
-  ', You Are Player X. Please Create A New Game To Start'
+  $('#messages').text('Press Create Game To Start'
   ).css('background-color', 'white')
+  $('#username').show()
+  $('#username').html(store.user.email.split('@').slice(0, -1))
 }
 
 const signInFailure = function () {
-  $('#messages').text('Please Enter Correct Email and Password'
-  ).css('background-color', 'red')
+  $('#messages').text('Please Enter Correct Email and Password')
   $('form').trigger('reset')
+  $('#messages').show()
 }
 
 const changePasswordSuccess = function () {
-  $('#messages').text('Changed password successfully'
-  ).css('background-color', 'limegreen')
+  $('#messages').text('Changed password successfully')
   $('form').trigger('reset')
+  $('#messages').show()
 }
 
 const changePasswordFailure = function () {
@@ -65,6 +66,8 @@ const signOutSuccess = function () {
   $('#sign-out').hide()
   $('#games-completed').hide()
   $('#messages').show()
+  $('#username').hide()
+  $('#total-games').hide()
   store.user = null
   store.game = null
   logic.gameBoard = ['', '', '', '', '', '', '', '', '']
@@ -87,6 +90,9 @@ const createGameSuccess = function (responseData) {
   $('#gamesPlayed').hide()
   $('#games-completed').hide()
   $('#get-index').show()
+  console.log(store)
+  $('#total-games').show()
+  $('#total-games').html('game id:' + ' ' + store.game.id)
 }
 
 const createGameFailure = function () {

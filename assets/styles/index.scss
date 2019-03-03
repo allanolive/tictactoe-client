@@ -7,16 +7,36 @@
 h1 {
   text-align: center;
   font-family: sans-serif;
+  margin-top: 0;
 }
 
 body {
   background-color: white;
+  margin: 0;
+}
+
+.username {
+  margin: auto;
+  position: absolute;
+  left: 5px;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.total-games {
+  margin: auto;
+  position: absolute;
+  right: 5px;
+  font-size: 14px;
+  padding: 5px;
 }
 
 .container {
   overflow: hidden;
   width: 300px;
   margin: 50px auto 0 auto;
+  font-weight: bold;
+  font-family: sans-serif;
 
   .turn {
     width: 100%;
@@ -33,6 +53,7 @@ body {
 
   .square {
     float: left;
+    font-weight: bold;
     width: 100px;
     height: 100px;
     border: 3px solid;
@@ -46,23 +67,39 @@ body {
 }
 
 .messages {
-  font-size: 24px;
-  height: 24px;
+  font-size: 20px;
+  height: 40px;
+  font-weight: 700;
+  text-align: center;
 }
 
-.container .square:hover {
+.square:hover {
   background: rgba(10,10,10,0.5)
 }
 
 button {
-background: rgba(10,10,10,0.9);
+font-family: sans-serif;
+background: black;
 color: white;
 font-weight: bold;
 border: 1px solid rgba(20,20,20,0.7);
 cursor: pointer;
-width: 280px;
+width: 300px;
 height: 40px;
 font-size: 24px;
 display: block;
 margin: 10px auto;
+}
+
+.results {
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  background-color: black;
+  color: white;
+  width: 300px;
+  margin: 6px auto;
 }
