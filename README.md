@@ -44,19 +44,6 @@ clicking used up squares and before starting a game.
 
 
 
-
-UNSOLVED PROBLEMS:
-
-- properly store number of games played by user
-- properly display in user interface number og games played
-- change over in games to true when game is over
-- display invalid moves by current player
-- remove errors from console
-- improve user interface and effects
-
-
-
-
 USER STORIES:
 
 User story 1 - I will want to be able to sign up in order to be able to access

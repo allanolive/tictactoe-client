@@ -16,7 +16,6 @@ const signUpFailure = function () {
 
 const signInSuccess = function (responseData) {
   store.user = responseData.user
-  console.log(store)
   $('#sign-up').hide()
   $('#sign-in').hide()
   $('#games-completed').show()
@@ -90,7 +89,6 @@ const createGameSuccess = function (responseData) {
   $('#gamesPlayed').hide()
   $('#games-completed').hide()
   $('#get-index').show()
-  console.log(store)
   $('#total-games').show()
   $('#total-games').html('game id:' + ' ' + store.game.id)
 }
