@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Example</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+    <h1><span class="username" id="username"></span>Tic Tac Toe<span class="total-games" id="total-games"> </span></h1>
+        <p class="messages" id="messages">Please Sign In</p>
+        <form id="sign-up" class="border">
+          <fieldset>
+            <legend>Sign Up</legend>
+            <input name="credentials[email]" type="email" placeholder="email">
+            <input name="credentials[password]" required type="password" placeholder="Password">
+            <input name="credentials[password_confirmation]" required type="password" placeholder="Confirm Password">
+            <input type="submit" value="Sign up!">
+          </fieldset>
+        </form>
+        <form id="sign-in" class="border">
+            <fieldset>
+              <legend>Sign In</legend>
+              <input name="credentials[email]" type="email" placeholder="email">
+              <input name="credentials[password]" type="password" placeholder="Password">
+              <input type="submit" value="Sign In!">
+            </fieldset>
+        </form>
+        <form id="change-password" class="border">
+          <fieldset>
+            <legend>Change Password</legend>
+            <input name="passwords[old]" type="password" placeholder="Old Password">
+            <input name="passwords[new]" type="password" placeholder="New Password">
+            <input type="submit" value="Change Password!">
+          </fieldset>
+        </form>
+        <button id="sign-out">Sign Out</button>
+        <button id="get-index"># Of Games Completed</button>
+        <button id="create-game">Create Game</button>
+        <div class="container" id="gameBoard">
+          <span class="turn" id="turn"></span>
+          <div class="square" id="square1" data-cell-index='0'></div>
+          <div class="square" id="square2" data-cell-index='1'></div>
+          <div class="square" id="square3" data-cell-index='2'></div>
+          <div class="square" id="square4" data-cell-index='3'></div>
+          <div class="square" id="square5" data-cell-index='4'></div>
+          <div class="square" id="square6" data-cell-index='5'></div>
+          <div class="square" id="square7" data-cell-index='6'></div>
+          <div class="square" id="square8" data-cell-index='7'></div>
+          <div class="square" id="square9" data-cell-index='8'></div>
+        </div>
+        <div class="results" id="games-completed">GAMES COMPLETED
+        <div id="gamesPlayed"></div>
+      </div>
+
+        <button id="playAgainBtn">PLAY AGAIN</button>
+    </body>
+    </html>
